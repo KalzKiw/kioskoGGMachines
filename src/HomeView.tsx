@@ -3,12 +3,11 @@ import QRCode from "react-qr-code";
 import { Instagram, Twitter, Linkedin, Phone, Music2, Star, Award, Cpu, Zap } from "lucide-react";
 
 type Props = {
-  setView?: (view: "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE") => void;
+  setView: (view: "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE") => void;
 };
 
-const HomeView: React.FC<Props> = () => {
+const HomeView: React.FC<Props> = ({ setView }) => {
   const catalogUrl = "https://www.ggmachines.ie/";
-  const miniPcsUrl = "https://prueba-gg-machines.vercel.app/";
 
   const socialLinks = [
     {
@@ -101,7 +100,7 @@ const HomeView: React.FC<Props> = () => {
         <div className="flex flex-col gap-8 items-center justify-center h-[37%] px-8">
           {/* Primary Button: See Catalog */}
           <button
-            onClick={() => window.location.href = catalogUrl}
+            onClick={() => setView("CATALOG")}
             className="group w-full max-w-2xl h-32 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border-2 border-cyan-500/60 ring-1 ring-cyan-400/20 shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-cyan-400 hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] hover:ring-cyan-300/40"
           >
             {/* Glow background on hover */}
@@ -123,7 +122,7 @@ const HomeView: React.FC<Props> = () => {
 
           {/* Secondary Button: Mini PCs */}
           <button
-            onClick={() => window.location.href = miniPcsUrl}
+            onClick={() => setView("MINI_PCS")}
             className="group w-full max-w-2xl h-32 rounded-3xl bg-gradient-to-b from-slate-900/70 to-slate-950/80 border-2 border-gray-600/40 ring-1 ring-gray-500/10 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-gray-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-orange-600/10 via-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
