@@ -9,7 +9,7 @@ interface MiniPcViewProps {
 const MiniPcView: React.FC<MiniPcViewProps> = ({ setView }) => (
   <div className="h-full w-full relative">
     <iframe
-      src="https://prueba-gg-machines.vercel.app/"
+      src="https://rnagy77.wixsite.com/my-site-3"
       className="h-full w-full border-none absolute top-0 left-0"
       style={{ zIndex: 1 }}
       allow="fullscreen"
