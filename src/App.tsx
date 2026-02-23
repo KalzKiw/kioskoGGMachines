@@ -14,8 +14,8 @@ const App: React.FC = () => {
     <div className="h-screen w-screen bg-gray-950 overflow-hidden relative flex flex-col">
       <div className="flex-1 overflow-hidden">
         {currentView === "HOME" && <HomeView setView={setCurrentView} />}
-        {currentView === "CATALOG" && <CatalogView />}
-        {currentView === "MINI_PCS" && <MiniPcView />}
+        {currentView === "CATALOG" && <CatalogView setView={setCurrentView} />}
+        {currentView === "MINI_PCS" && <MiniPcView setView={setCurrentView} />}
         {currentView === "PIXIE" && <PixieView />}
       </div>
       <Footer />

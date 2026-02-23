@@ -1,5 +1,11 @@
 import React from "react";
 
+type View = "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE";
+
+interface CatalogViewProps {
+  setView: (view: View) => void;
+}
+
 const categories = [
   { icon: "🖥️", label: "PCs Gaming", description: "Equipos completos", gradient: "from-blue-500 to-cyan-500" },
   { icon: "🧩", label: "Componentes", description: "CPU, GPU, RAM...", gradient: "from-purple-500 to-pink-500" },
@@ -7,10 +13,19 @@ const categories = [
   { icon: "🎮", label: "Periféricos", description: "Teclados, mouse...", gradient: "from-orange-500 to-red-500" },
 ];
 
-const CatalogView: React.FC = () => (
+const CatalogView: React.FC<CatalogViewProps> = ({ setView }) => (
   <div className="flex flex-col h-full w-full items-center justify-center bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 relative overflow-y-auto pb-32">
     {/* Fondo decorativo */}
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
+    
+    {/* Botón de volver */}
+    <button
+      onClick={() => setView("HOME")}
+      className="group absolute top-8 left-8 z-50 flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-white/10 ring-1 ring-white/5 text-white text-xl font-bold shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-500/30 active:scale-95"
+    >
+      <div className="text-3xl group-hover:scale-110 transition-transform">←</div>
+      <span className="group-hover:text-cyan-200 transition-colors">Volver</span>
+    </button>
     
     {/* Título */}
     <div className="absolute top-16 left-0 right-0 text-center z-10">
