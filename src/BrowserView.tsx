@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-type View = "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE" | "BROWSER";
+type View = "HOME" | "CATALOG" | "MINI_PCS" | "BROWSER" | "PIXIE" | "INSTAGRAM" | "TWITTER" | "TIKTOK" | "LINKEDIN" | "PHONE";
 
 interface BrowserViewProps {
   setView: (view: View) => void;

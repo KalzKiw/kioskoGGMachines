@@ -2,41 +2,47 @@ import React from "react";
 import QRCode from "react-qr-code";
 import { Instagram, Twitter, Linkedin, Phone, Music2, Star, Award, Cpu, Zap, Globe } from "lucide-react";
 
-const HomeView: React.FC = () => {
+type View = "HOME" | "CATALOG" | "MINI_PCS" | "BROWSER" | "PIXIE" | "INSTAGRAM" | "TWITTER" | "TIKTOK" | "LINKEDIN" | "PHONE";
+
+interface HomeViewProps {
+  setView: (view: View) => void;
+}
+
+const HomeView: React.FC<HomeViewProps> = ({ setView }) => {
   const catalogUrl = "https://www.ggmachines.ie/";
 
   const socialLinks = [
     {
       name: "Instagram",
-      url: "https://www.instagram.com/ggmachines",
+      viewType: "INSTAGRAM" as const,
       color: "hover:border-pink-400/60 hover:shadow-pink-500/40",
       textColor: "group-hover:text-pink-300",
       icon: Instagram,
     },
     {
       name: "Twitter",
-      url: "https://twitter.com/ggmachines",
+      viewType: "TWITTER" as const,
       color: "hover:border-blue-400/60 hover:shadow-blue-500/40",
       textColor: "group-hover:text-blue-300",
       icon: Twitter,
     },
     {
       name: "TikTok",
-      url: "https://www.tiktok.com/@ggmachines",
+      viewType: "TIKTOK" as const,
       color: "hover:border-cyan-400/60 hover:shadow-cyan-500/40",
       textColor: "group-hover:text-cyan-300",
       icon: Music2,
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/company/ggmachines",
+      viewType: "LINKEDIN" as const,
       color: "hover:border-blue-500/60 hover:shadow-blue-500/40",
       textColor: "group-hover:text-blue-400",
       icon: Linkedin,
     },
     {
       name: "Contact",
-      url: "tel:+353-1-234-5678",
+      viewType: "PHONE" as const,
       color: "hover:border-emerald-400/60 hover:shadow-emerald-500/40",
       textColor: "group-hover:text-emerald-300",
       icon: Phone,
@@ -96,7 +102,7 @@ const HomeView: React.FC = () => {
         <div className="flex flex-col gap-4 items-center justify-center h-[35%] px-8">
           {/* Primary Button: See Catalog */}
           <button
-            onClick={() => window.open("https://www.ggmachines.ie/", "_blank")}
+            onClick={() => setView("CATALOG")}
             className="group w-full max-w-2xl h-28 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border-2 border-cyan-500/60 ring-1 ring-cyan-400/20 shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-cyan-400 hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] hover:ring-cyan-300/40"
           >
             {/* Glow background on hover */}
@@ -118,7 +124,7 @@ const HomeView: React.FC = () => {
 
           {/* Secondary Button: Mini PCs */}
           <button
-            onClick={() => window.open("https://prueba-gg-machines.vercel.app/", "_blank")}
+            onClick={() => setView("MINI_PCS")}
             className="group w-full max-w-2xl h-28 rounded-3xl bg-gradient-to-b from-slate-900/70 to-slate-950/80 border-2 border-gray-600/40 ring-1 ring-gray-500/10 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-gray-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-orange-600/10 via-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -139,7 +145,7 @@ const HomeView: React.FC = () => {
 
           {/* Tertiary Button: Browser */}
           <button
-            onClick={() => window.open("https://www.google.com", "_blank")}
+            onClick={() => setView("BROWSER")}
             className="group w-full max-w-2xl h-28 rounded-3xl bg-gradient-to-b from-slate-900/70 to-slate-950/80 border-2 border-green-600/40 ring-1 ring-green-500/10 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-green-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 via-emerald-500/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -167,16 +173,14 @@ const HomeView: React.FC = () => {
         {socialLinks.map((social) => {
           const Icon = social.icon;
           return (
-            <a
+            <button
               key={social.name}
-              href={social.url}
-              target={social.name === "Contact" ? "_self" : "_blank"}
-              rel={social.name !== "Contact" ? "noopener noreferrer" : ""}
+              onClick={() => setView(social.viewType)}
               title={social.name}
               className={`group w-16 h-16 rounded-full bg-gradient-to-b from-slate-900/90 to-slate-950 border border-white/10 ring-1 ring-white/5 flex items-center justify-center text-2xl shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-all duration-300 hover:scale-110 ${social.color}`}
             >
               <Icon className={`w-6 h-6 text-white ${social.textColor}`} />
-            </a>
+            </button>
           );
         })}
       </div>

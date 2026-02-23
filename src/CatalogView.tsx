@@ -1,6 +1,6 @@
 import React from "react";
 
-type View = "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE";
+type View = "HOME" | "CATALOG" | "MINI_PCS" | "BROWSER" | "PIXIE" | "INSTAGRAM" | "TWITTER" | "TIKTOK" | "LINKEDIN" | "PHONE";
 
 interface CatalogViewProps {
   setView: (view: View) => void;
