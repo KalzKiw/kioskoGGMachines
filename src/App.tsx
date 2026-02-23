@@ -18,17 +18,7 @@ const App: React.FC = () => {
         {currentView === "MINI_PCS" && <MiniPcView setView={setCurrentView} />}
         {currentView === "PIXIE" && <PixieView />}
       </div>
-      <Footer />
-
-      {currentView !== "HOME" && (
-        <button
-          className="group fixed left-8 bottom-24 z-50 h-24 px-8 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-white/10 ring-1 ring-white/5 text-white text-2xl font-bold shadow-[0_20px_50px_rgba(0,0,0,0.65)] transition-all duration-300 active:scale-98 flex items-center gap-3 hover:border-cyan-400/50 hover:shadow-cyan-500/30"
-          onClick={() => setCurrentView("HOME")}
-        >
-          <div className="text-4xl group-hover:scale-110 transition-transform">🏠</div>
-          <span className="group-hover:text-cyan-200 transition-colors">Atrás</span>
-        </button>
-      )}
+      {currentView !== "CATALOG" && currentView !== "MINI_PCS" && <Footer />}
     </div>
   );
 };
