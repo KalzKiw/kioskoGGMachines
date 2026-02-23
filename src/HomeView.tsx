@@ -1,9 +1,9 @@
 import React from "react";
 import QRCode from "react-qr-code";
-import { Instagram, Twitter, Linkedin, Phone, Music2, Star, Award, Cpu, Zap } from "lucide-react";
+import { Instagram, Twitter, Linkedin, Phone, Music2, Star, Award, Cpu, Zap, Globe } from "lucide-react";
 
 type Props = {
-  setView: (view: "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE") => void;
+  setView: (view: "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE" | "BROWSER") => void;
 };
 
 const HomeView: React.FC<Props> = ({ setView }) => {
@@ -97,11 +97,11 @@ const HomeView: React.FC<Props> = ({ setView }) => {
         <div className="h-[16%]"></div>
 
         {/* Navigation Buttons - 37% */}
-        <div className="flex flex-col gap-8 items-center justify-center h-[37%] px-8">
+        <div className="flex flex-col gap-4 items-center justify-center h-[35%] px-8">
           {/* Primary Button: See Catalog */}
           <button
             onClick={() => setView("CATALOG")}
-            className="group w-full max-w-2xl h-32 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border-2 border-cyan-500/60 ring-1 ring-cyan-400/20 shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-cyan-400 hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] hover:ring-cyan-300/40"
+            className="group w-full max-w-2xl h-28 rounded-3xl bg-gradient-to-b from-slate-900/90 to-slate-950 border-2 border-cyan-500/60 ring-1 ring-cyan-400/20 shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-cyan-400 hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] hover:ring-cyan-300/40"
           >
             {/* Glow background on hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/15 via-cyan-500/15 to-green-500/15 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -123,7 +123,7 @@ const HomeView: React.FC<Props> = ({ setView }) => {
           {/* Secondary Button: Mini PCs */}
           <button
             onClick={() => setView("MINI_PCS")}
-            className="group w-full max-w-2xl h-32 rounded-3xl bg-gradient-to-b from-slate-900/70 to-slate-950/80 border-2 border-gray-600/40 ring-1 ring-gray-500/10 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-gray-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
+            className="group w-full max-w-2xl h-28 rounded-3xl bg-gradient-to-b from-slate-900/70 to-slate-950/80 border-2 border-gray-600/40 ring-1 ring-gray-500/10 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-gray-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-orange-600/10 via-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             
@@ -138,6 +138,27 @@ const HomeView: React.FC<Props> = ({ setView }) => {
                 </div>
               </div>
               <div className="text-fuchsia-400/60 text-4xl group-hover:translate-x-2 transition-transform duration-300">→</div>
+            </div>
+          </button>
+
+          {/* Tertiary Button: Browser */}
+          <button
+            onClick={() => setView("BROWSER")}
+            className="group w-full max-w-2xl h-28 rounded-3xl bg-gradient-to-b from-slate-900/70 to-slate-950/80 border-2 border-green-600/40 ring-1 ring-green-500/10 shadow-[0_8px_20px_rgba(0,0,0,0.4)] transition-all duration-300 active:scale-98 overflow-hidden relative hover:border-green-500 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 via-emerald-500/10 to-green-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            
+            <div className="relative flex items-center justify-between px-10 h-full">
+              <div className="flex items-center gap-5">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-green-600 to-emerald-500 flex items-center justify-center shadow-lg ring-1 ring-green-300/30">
+                  <Globe className="w-10 h-10 text-green-300 drop-shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-white text-3xl font-bold">Browser</h3>
+                  <p className="text-gray-400 text-md">Search & browse</p>
+                </div>
+              </div>
+              <div className="text-green-400/60 text-4xl group-hover:translate-x-2 transition-transform duration-300">→</div>
             </div>
           </button>
         </div>

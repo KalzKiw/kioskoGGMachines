@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import HomeView from "./HomeView";
 import CatalogView from "./CatalogView";
 import MiniPcView from "./MiniPcView";
+import BrowserView from "./BrowserView";
 import PixieView from "./PixieView";
 import Footer from "./Footer";
 
-type View = "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE";
+type View = "HOME" | "CATALOG" | "MINI_PCS" | "PIXIE" | "BROWSER";
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>("HOME");
 
   return (
-    currentView === "CATALOG" || currentView === "MINI_PCS"
+    currentView === "CATALOG" || currentView === "MINI_PCS" || currentView === "BROWSER"
       ? (
         <div className="h-screen w-screen bg-gray-950 overflow-hidden relative">
           {currentView === "CATALOG" && <CatalogView setView={setCurrentView} />}
           {currentView === "MINI_PCS" && <MiniPcView setView={setCurrentView} />}
+          {currentView === "BROWSER" && <BrowserView setView={setCurrentView} />}
         </div>
       )
       : (
