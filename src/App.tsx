@@ -18,7 +18,7 @@ const App: React.FC = () => {
         {currentView === "MINI_PCS" && <MiniPcView setView={setCurrentView} />}
         {currentView === "PIXIE" && <PixieView />}
       </div>
-      {currentView !== "CATALOG" && currentView !== "MINI_PCS" && <Footer />}
+      {currentView === "HOME" && <Footer />}
     </div>
   );
 };
