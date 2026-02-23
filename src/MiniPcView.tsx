@@ -11,7 +11,7 @@ const MiniPcView: React.FC<MiniPcViewProps> = ({ setView }) => (
     <iframe
       src="https://prueba-gg-machines.vercel.app/"
       className="h-full w-full border-none absolute top-0 left-0"
-      style={{ zIndex: 1, maxHeight: "calc(100vh - 200px)" }}
+      style={{ zIndex: 1 }}
       allow="fullscreen"
       title="Mini PCs Landing"
     />

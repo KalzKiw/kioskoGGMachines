@@ -11,15 +11,22 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>("HOME");
 
   return (
-    <div className="h-screen w-screen bg-gray-950 overflow-hidden relative flex flex-col">
-      <div className="flex-1 overflow-hidden">
-        {currentView === "HOME" && <HomeView setView={setCurrentView} />}
-        {currentView === "CATALOG" && <CatalogView setView={setCurrentView} />}
-        {currentView === "MINI_PCS" && <MiniPcView setView={setCurrentView} />}
-        {currentView === "PIXIE" && <PixieView />}
-      </div>
-      {currentView === "HOME" && <Footer />}
-    </div>
+    currentView === "CATALOG" || currentView === "MINI_PCS"
+      ? (
+        <div className="h-screen w-screen bg-gray-950 overflow-hidden relative">
+          {currentView === "CATALOG" && <CatalogView setView={setCurrentView} />}
+          {currentView === "MINI_PCS" && <MiniPcView setView={setCurrentView} />}
+        </div>
+      )
+      : (
+        <div className="h-screen w-screen bg-gray-950 overflow-hidden relative flex flex-col">
+          <div className="flex-1 overflow-hidden">
+            {currentView === "HOME" && <HomeView setView={setCurrentView} />}
+            {currentView === "PIXIE" && <PixieView />}
+          </div>
+          {currentView === "HOME" && <Footer />}
+        </div>
+      )
   );
 };
 

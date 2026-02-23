@@ -11,7 +11,7 @@ const CatalogView: React.FC<CatalogViewProps> = ({ setView }) => (
     <iframe
       src="https://www.ggmachines.ie/"
       className="h-full w-full border-none absolute top-0 left-0"
-      style={{ zIndex: 1, maxHeight: "calc(100vh - 200px)" }}
+      style={{ zIndex: 1 }}
       allow="fullscreen"
       title="GG Machines Catalog"
     />
